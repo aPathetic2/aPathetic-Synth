@@ -1,0 +1,56 @@
+# Visual Studio / MSBuild
+.vs/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+ipch/
+x64/
+Win32/
+[Dd]ebug/
+[Rr]elease/
+*.obj
+*.o
+*.lib
+*.dll
+*.exp
+*.pdb
+*.ilk
+*.iobj
+*.ipdb
+*.tlog
+*.log
+*.recipe
+*.lastbuildstate
+*.FileListAbsolute.txt
+
+# Full build trees (regenerate with Projucer + VS)
+Builds/VisualStudio2022/
+Builds/VisualStudio2026/x64/
+Builds/VisualStudio2026/Win32/
+Builds/VisualStudio2026/.vs/
+
+# Keep VS project files + icon + resources if present, ignore build products only:
+# (x64/Win32 already cover intermediate and output folders)
+
+# Inno Setup output (rebuild with Installer/build-installer.ps1)
+Installer/Output/
+
+# Local / OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*~
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# Optional local tools / caches
+Tools/**/*.exe
+Tools/**/*.pdb
+**/NormalizePresets/
