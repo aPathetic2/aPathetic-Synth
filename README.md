@@ -23,13 +23,17 @@ A Windows VST3 + standalone software synthesizer with a 1980s home electronic or
 - [JUCE](https://juce.com/) (to build from source)  
 - Visual Studio 2022 or 2026 with C++ desktop workload  
 
-## Install (binary)
+## Download (installer)
 
-If you have the setup package:
+**[Download aPathetic Synth for Windows (setup)](https://github.com/aPathetic2/aPathetic-Synth/releases/latest)**
 
-1. Run `aPatheticSynth-Setup-1.0.0.exe` (built via Inno Setup — see below).  
-2. Standalone installs to `C:\Program Files\aPathetic Synth\`  
-3. VST3 installs to `C:\Program Files\Common Files\VST3\aPathetic Synth.vst3`  
+Or open the [Releases](https://github.com/aPathetic2/aPathetic-Synth/releases) page and get `aPatheticSynth-Setup-1.0.0.exe`.
+
+### Install
+
+1. Run the setup executable (admin rights required).  
+2. **Standalone** → `C:\Program Files\aPathetic Synth\`  
+3. **VST3** → `C:\Program Files\Common Files\VST3\aPathetic Synth.vst3`  
 4. Rescan plugins in your DAW if needed.  
 
 Presets are stored per-user in:
