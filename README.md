@@ -3,7 +3,7 @@
 A Windows VST3 + standalone software synthesizer with a 1980s home electronic organ aesthetic.
 
 **Manufacturer:** aPathetic2  
-**Version:** 1.0.0  
+**Version:** 1.0.1  
 **Formats:** VST3 (64-bit), Standalone  
 
 ## Features
@@ -27,7 +27,7 @@ A Windows VST3 + standalone software synthesizer with a 1980s home electronic or
 
 **[Download aPathetic Synth for Windows (setup)](https://github.com/aPathetic2/aPathetic-Synth/releases/latest)**
 
-Or open the [Releases](https://github.com/aPathetic2/aPathetic-Synth/releases) page and get `aPatheticSynth-Setup-1.0.0.exe`.
+Or open the [Releases](https://github.com/aPathetic2/aPathetic-Synth/releases) page and get the latest setup `.exe`.
 
 ### Install
 
@@ -60,7 +60,7 @@ cd Installer
 .\build-installer.ps1
 ```
 
-Output: `Installer/Output/aPatheticSynth-Setup-1.0.0.exe`
+Output: `Installer/Output/aPatheticSynth-Setup-<version>.exe`
 
 ## Project layout
 
