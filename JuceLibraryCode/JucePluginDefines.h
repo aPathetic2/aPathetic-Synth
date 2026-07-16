@@ -56,7 +56,9 @@
  #define JucePlugin_ManufacturerEmail      ""
 #endif
 #ifndef  JucePlugin_ManufacturerCode
- #define JucePlugin_ManufacturerCode       0x61507432
+ // Keep "Darr" forever: changing this changes the VST3 class ID and breaks
+ // already-scanned hosts (e.g. FL Studio) and saved projects.
+ #define JucePlugin_ManufacturerCode       0x44617272
 #endif
 #ifndef  JucePlugin_PluginCode
  #define JucePlugin_PluginCode             0x61506174
@@ -77,13 +79,13 @@
  #define JucePlugin_EditorRequiresKeyboardFocus  0
 #endif
 #ifndef  JucePlugin_Version
- #define JucePlugin_Version                1.1.0
+ #define JucePlugin_Version                1.1.1
 #endif
 #ifndef  JucePlugin_VersionCode
- #define JucePlugin_VersionCode            0x10100
+ #define JucePlugin_VersionCode            0x10101
 #endif
 #ifndef  JucePlugin_VersionString
- #define JucePlugin_VersionString          "1.1.0"
+ #define JucePlugin_VersionString          "1.1.1"
 #endif
 #ifndef  JucePlugin_VSTUniqueID
  #define JucePlugin_VSTUniqueID            JucePlugin_PluginCode

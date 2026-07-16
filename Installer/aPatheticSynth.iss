@@ -13,11 +13,11 @@
 ;    - Or:   ISCC.exe aPatheticSynth.iss
 ;
 ;  Output:
-;    Installer\Output\aPatheticSynth-Setup-1.1.0.exe
+;    Installer\Output\aPatheticSynth-Setup-1.1.1.exe
 ;==============================================================================
 
 #define MyAppName      "aPathetic Synth"
-#define MyAppVersion   "1.1.0"
+#define MyAppVersion   "1.1.1"
 #define MyAppPublisher "aPathetic2"
 #define MyAppURL       "https://github.com/aPathetic2/aPathetic-Synth"
 #define MyAppExeName   "aPathetic Synth.exe"

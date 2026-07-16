@@ -3,8 +3,12 @@
 A Windows VST3 + standalone software synthesizer with a 1980s home electronic organ aesthetic.
 
 **Manufacturer:** aPathetic2  
-**Version:** 1.1.0  
+**Version:** 1.1.1  
 **Formats:** VST3 (64-bit), Standalone  
+
+### What's new in 1.1.1
+
+- **FL Studio VST3 fix** — restored original plugin manufacturer code (Darr) so the VST3 ID matches hosts that already scanned earlier builds. Display manufacturer remains aPathetic2.
 
 ### What's new in 1.1.0
 

@@ -32,7 +32,7 @@ Or open `aPatheticSynth.iss` in the Inno Setup Compiler and press **Ctrl+F9**.
 Output:
 
 ```text
-Installer\Output\aPatheticSynth-Setup-1.1.0.exe
+Installer\Output\aPatheticSynth-Setup-1.1.1.exe
 ```
 
 Distribute that `.exe` only (users do not need Visual Studio or Inno Setup).
@@ -44,7 +44,7 @@ The setup uses the organ-style icon in `assets\apathetic-synth-icon.ico` (wood p
 Edit these lines at the top of `aPatheticSynth.iss`:
 
 ```iss
-#define MyAppVersion   "1.1.0"
+#define MyAppVersion   "1.1.1"
 ```
 
 The setup filename becomes `aPatheticSynth-Setup-<version>.exe`. Keep `AppId` the same across versions so Windows treats updates as upgrades of the same product.
