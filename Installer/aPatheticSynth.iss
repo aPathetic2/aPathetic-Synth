@@ -17,9 +17,9 @@
 ;==============================================================================
 
 #define MyAppName      "aPathetic Synth"
-#define MyAppVersion   "1.0.0"
-#define MyAppPublisher "Darren"
-#define MyAppURL       "https://www.Darren.com"
+#define MyAppVersion   "1.0.1"
+#define MyAppPublisher "aPathetic2"
+#define MyAppURL       "https://github.com/aPathetic2/aPathetic-Synth"
 #define MyAppExeName   "aPathetic Synth.exe"
 
 ; Release build outputs (relative to this .iss file)

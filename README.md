@@ -2,7 +2,7 @@
 
 A Windows VST3 + standalone software synthesizer with a 1980s home electronic organ aesthetic.
 
-**Manufacturer:** Darren  
+**Manufacturer:** aPathetic2  
 **Version:** 1.0.0  
 **Formats:** VST3 (64-bit), Standalone  
 
@@ -75,4 +75,4 @@ Builds/              Visual Studio projects (build outputs gitignored)
 
 ## License
 
-Copyright Darren. All rights reserved unless otherwise stated.
+Copyright aPathetic2. All rights reserved unless otherwise stated.

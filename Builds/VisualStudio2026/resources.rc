@@ -16,8 +16,8 @@ BEGIN
   BEGIN
     BLOCK "040904E4"
     BEGIN
-      VALUE "CompanyName",  "Darren\0"
-      VALUE "LegalCopyright",  "Darren\0"
+      VALUE "CompanyName",  "aPathetic2\0"
+      VALUE "LegalCopyright",  "aPathetic2\0"
       VALUE "FileDescription",  "aPathetic Synth\0"
       VALUE "FileVersion",  "1.0.0\0"
       VALUE "ProductName",  "aPathetic Synth\0"

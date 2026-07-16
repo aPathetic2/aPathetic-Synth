@@ -47,16 +47,16 @@
  #define JucePlugin_Desc                   "aPathetic Synth"
 #endif
 #ifndef  JucePlugin_Manufacturer
- #define JucePlugin_Manufacturer           "Darren"
+ #define JucePlugin_Manufacturer           "aPathetic2"
 #endif
 #ifndef  JucePlugin_ManufacturerWebsite
- #define JucePlugin_ManufacturerWebsite    "www.Darren.com"
+ #define JucePlugin_ManufacturerWebsite    "https://github.com/aPathetic2/aPathetic-Synth"
 #endif
 #ifndef  JucePlugin_ManufacturerEmail
  #define JucePlugin_ManufacturerEmail      ""
 #endif
 #ifndef  JucePlugin_ManufacturerCode
- #define JucePlugin_ManufacturerCode       0x44617272
+ #define JucePlugin_ManufacturerCode       0x61507432
 #endif
 #ifndef  JucePlugin_PluginCode
  #define JucePlugin_PluginCode             0x61506174
@@ -110,10 +110,10 @@
  #define JucePlugin_AUManufacturerCode     JucePlugin_ManufacturerCode
 #endif
 #ifndef  JucePlugin_CFBundleIdentifier
- #define JucePlugin_CFBundleIdentifier     com.Darren.aPatheticSynth
+ #define JucePlugin_CFBundleIdentifier     com.aPathetic2.aPatheticSynth
 #endif
 #ifndef  JucePlugin_AAXIdentifier
- #define JucePlugin_AAXIdentifier          com.Darren.aPatheticSynth
+ #define JucePlugin_AAXIdentifier          com.aPathetic2.aPatheticSynth
 #endif
 #ifndef  JucePlugin_AAXManufacturerCode
  #define JucePlugin_AAXManufacturerCode    JucePlugin_ManufacturerCode
@@ -137,7 +137,7 @@
  #define JucePlugin_IAASubType             JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_IAAName
- #define JucePlugin_IAAName                "Darren: aPathetic Synth"
+ #define JucePlugin_IAAName                "aPathetic2: aPathetic Synth"
 #endif
 #ifndef  JucePlugin_VSTNumMidiInputs
  #define JucePlugin_VSTNumMidiInputs       16
@@ -152,10 +152,10 @@
  #define JucePlugin_ARATransformationFlags  0
 #endif
 #ifndef  JucePlugin_ARAFactoryID
- #define JucePlugin_ARAFactoryID           "com.Darren.aPatheticSynth.factory"
+ #define JucePlugin_ARAFactoryID           "com.aPathetic2.aPatheticSynth.factory"
 #endif
 #ifndef  JucePlugin_ARADocumentArchiveID
- #define JucePlugin_ARADocumentArchiveID   "com.Darren.aPatheticSynth.aradocumentarchive.1.0.0"
+ #define JucePlugin_ARADocumentArchiveID   "com.aPathetic2.aPatheticSynth.aradocumentarchive.1.0.0"
 #endif
 #ifndef  JucePlugin_ARACompatibleArchiveIDs
  #define JucePlugin_ARACompatibleArchiveIDs  ""

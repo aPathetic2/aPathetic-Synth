@@ -2,9 +2,9 @@
 
 <JUCERPROJECT id="aPat001" name="aPathetic Synth" projectType="audioplug"
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1"
-              companyName="Darren" companyCopyright="Darren" pluginName="aPathetic Synth"
-              pluginDesc="aPathetic Synth" pluginManufacturer="Darren"
-              pluginManufacturerCode="Darr" pluginCode="aPat"
+              companyName="aPathetic2" companyCopyright="aPathetic2" pluginName="aPathetic Synth"
+              pluginDesc="aPathetic Synth" pluginManufacturer="aPathetic2"
+              pluginManufacturerCode="aPt2" pluginCode="aPat"
               pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
               pluginFormats="buildVST3,buildStandalone"
               cppLanguageStandard="17" displaySplashScreen="1" reportAppUsage="0"
@@ -12,7 +12,7 @@
               pluginChannelConfigs="" pluginIsSynth="1" pluginWantsMidiIn="1"
               pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0"
               pluginEditorRequiresKeys="0" pluginAAXCategory="2048"
-              pluginVSTCategory="kPlugCategSynth" bundleIdentifier="com.Darren.aPatheticSynth"
+              pluginVSTCategory="kPlugCategSynth" bundleIdentifier="com.aPathetic2.aPatheticSynth"
               version="1.0.0">
   <MAINGROUP id="aPatSrc" name="aPathetic Synth">
     <GROUP id="aPatGrp" name="Source">
