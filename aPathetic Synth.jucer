@@ -13,7 +13,7 @@
               pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0"
               pluginEditorRequiresKeys="0" pluginAAXCategory="2048"
               pluginVSTCategory="kPlugCategSynth" bundleIdentifier="com.aPathetic2.aPatheticSynth"
-              version="1.0.0">
+              version="1.1.0">
   <MAINGROUP id="aPatSrc" name="aPathetic Synth">
     <GROUP id="aPatGrp" name="Source">
       <FILE id="aPatPPh" name="PluginProcessor.h" compile="0" resource="0"

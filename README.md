@@ -3,8 +3,12 @@
 A Windows VST3 + standalone software synthesizer with a 1980s home electronic organ aesthetic.
 
 **Manufacturer:** aPathetic2  
-**Version:** 1.0.1  
+**Version:** 1.1.0  
 **Formats:** VST3 (64-bit), Standalone  
+
+### What's new in 1.1.0
+
+- Smaller editor window (~948×640) aimed at HD / 1080p monitors (closer to Harmor-sized plugins).  
 
 ## Features
 

@@ -9,8 +9,8 @@
 #include <windows.h>
 
 VS_VERSION_INFO VERSIONINFO
-FILEVERSION  1,0,0,0
-PRODUCTVERSION  1,0,0,0
+FILEVERSION  1,1,0,0
+PRODUCTVERSION  1,1,0,0
 BEGIN
   BLOCK "StringFileInfo"
   BEGIN
@@ -19,9 +19,9 @@ BEGIN
       VALUE "CompanyName",  "aPathetic2\0"
       VALUE "LegalCopyright",  "aPathetic2\0"
       VALUE "FileDescription",  "aPathetic Synth\0"
-      VALUE "FileVersion",  "1.0.0\0"
+      VALUE "FileVersion",  "1.1.0\0"
       VALUE "ProductName",  "aPathetic Synth\0"
-      VALUE "ProductVersion",  "1.0.0\0"
+      VALUE "ProductVersion",  "1.1.0\0"
     END
   END
 

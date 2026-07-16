@@ -9,18 +9,19 @@ APatheticSynthAudioProcessorEditor::APatheticSynthAudioProcessorEditor (APatheti
       levelMeter (p)
 {
     setLookAndFeel (&organLookAndFeel);
-    // Main panel stays 1280x960 (4:3); extra width on the right is for the level meter only
-    setSize (1280 + 72, 960);
+    // Compact ~Harmor-sized window for HD (1080p) hosts; was 1352x960 in 1.0.x
+    // Main panel ~900x640 (near 4:3); extra width on the right is for the level meter only
+    setSize (900 + 48, 640);
     setResizable (false, false);
 
     titleLabel.setText ("aPathetic", juce::dontSendNotification);
-    titleLabel.setFont (juce::FontOptions (26.0f).withStyle ("Bold"));
+    titleLabel.setFont (juce::FontOptions (20.0f).withStyle ("Bold"));
     titleLabel.setJustificationType (juce::Justification::centredLeft);
     titleLabel.setColour (juce::Label::textColourId, OrganLookAndFeel::gold());
     addAndMakeVisible (titleLabel);
 
     modelLabel.setText ("Electronic Organ Model AP-01", juce::dontSendNotification);
-    modelLabel.setFont (juce::FontOptions (12.0f));
+    modelLabel.setFont (juce::FontOptions (10.0f));
     modelLabel.setJustificationType (juce::Justification::centredLeft);
     modelLabel.setColour (juce::Label::textColourId, OrganLookAndFeel::silkScreen());
     addAndMakeVisible (modelLabel);
@@ -371,24 +372,25 @@ void APatheticSynthAudioProcessorEditor::layoutOscillatorColumn (OscillatorContr
                                                                  juce::Rectangle<int> column)
 {
     // Compact vertical column for side-by-side OSC 1/2/3
-    column = column.reduced (4, 2);
-    osc.titleLabel.setBounds (column.removeFromTop (16));
+    column = column.reduced (2, 1);
+    osc.titleLabel.setBounds (column.removeFromTop (14));
 
-    osc.waveLabel.setBounds (column.removeFromTop (12));
-    osc.waveBox.setBounds (column.removeFromTop (22).reduced (2, 0));
-    column.removeFromTop (4);
+    osc.waveLabel.setBounds (column.removeFromTop (10));
+    osc.waveBox.setBounds (column.removeFromTop (18).reduced (1, 0));
+    column.removeFromTop (2);
 
     auto body = column;
-    auto levelCol = body.removeFromLeft (juce::jmax (48, body.getWidth() / 3)).reduced (2, 0);
-    osc.levelLabel.setBounds (levelCol.removeFromTop (12));
-    osc.levelSlider.setBounds (levelCol.reduced (8, 0));
+    auto levelCol = body.removeFromLeft (juce::jmax (36, body.getWidth() / 3)).reduced (1, 0);
+    osc.levelLabel.setBounds (levelCol.removeFromTop (10));
+    osc.levelSlider.setBounds (levelCol.reduced (4, 0));
 
-    auto knobs = body.reduced (2, 0);
+    auto knobs = body.reduced (1, 0);
     const int halfH = knobs.getHeight() / 2;
-    auto semiArea = knobs.removeFromTop (halfH).reduced (2, 2);
-    auto fineArea = knobs.reduced (2, 2);
-    osc.semiSlider.setBounds (semiArea.withTrimmedTop (12));
-    osc.fineSlider.setBounds (fineArea.withTrimmedTop (12));
+    auto semiArea = knobs.removeFromTop (halfH).reduced (1, 1);
+    auto fineArea = knobs.reduced (1, 1);
+    // Leave room above rotary for attached name labels (SEMI / FINE)
+    osc.semiSlider.setBounds (semiArea.withTrimmedTop (16));
+    osc.fineSlider.setBounds (fineArea.withTrimmedTop (16));
 }
 
 void APatheticSynthAudioProcessorEditor::layoutKnobRow (juce::Rectangle<int> row,
@@ -402,7 +404,8 @@ void APatheticSynthAudioProcessorEditor::layoutKnobRow (juce::Rectangle<int> row
     for (auto* c : knobs)
     {
         if (c != nullptr)
-            c->setBounds (row.removeFromLeft (w).reduced (3, 2).withTrimmedTop (12));
+            // withTrimmedTop reserves space for attachToComponent labels above the rotary
+            c->setBounds (row.removeFromLeft (w).reduced (2, 1).withTrimmedTop (16));
     }
 }
 
@@ -618,8 +621,8 @@ void APatheticSynthAudioProcessorEditor::paint (juce::Graphics& g)
     paintWoodPanel (g, bounds);
 
     g.setColour (OrganLookAndFeel::woodDark().withAlpha (0.55f));
-    g.fillRect (0.0f, 0.0f, 10.0f, bounds.getHeight());
-    g.fillRect (bounds.getWidth() - 10.0f, 0.0f, 10.0f, bounds.getHeight());
+    g.fillRect (0.0f, 0.0f, 6.0f, bounds.getHeight());
+    g.fillRect (bounds.getWidth() - 6.0f, 0.0f, 6.0f, bounds.getHeight());
 
     if (! nameplateBounds.isEmpty())
         paintNameplate (g, nameplateBounds);
@@ -655,39 +658,39 @@ void APatheticSynthAudioProcessorEditor::paint (juce::Graphics& g)
 
 void APatheticSynthAudioProcessorEditor::resized()
 {
-    // Main controls keep the original 4:3 region; meter is an extra strip on the right
-    constexpr int keyboardHeight = 72;
-    constexpr int stripHeight = 3;
-    constexpr int gap = 6;
-    constexpr int meterWidth = 64;
+    // Compact layout for ~948x640; meter is an extra strip on the right
+    constexpr int keyboardHeight = 52;
+    constexpr int stripHeight = 2;
+    constexpr int gap = 4;
+    constexpr int meterWidth = 44;
 
-    auto full = getLocalBounds().reduced (12, 10);
+    auto full = getLocalBounds().reduced (8, 6);
 
     auto meterStrip = full.removeFromRight (meterWidth);
-    full.removeFromRight (6); // gap between controls and meter
+    full.removeFromRight (4); // gap between controls and meter
     meterPanelBounds = makePanelBounds (meterStrip, 2, 2);
-    levelMeter.setBounds (meterStrip.reduced (4, 4));
+    levelMeter.setBounds (meterStrip.reduced (2, 2));
 
     auto area = full;
 
     // ---- Nameplate ----
     {
-        auto nameBlock = area.removeFromTop (48);
+        auto nameBlock = area.removeFromTop (38);
         nameplateBounds = nameBlock.toFloat();
 
-        auto nameInner = nameBlock.reduced (10, 4);
-        auto top = nameInner.removeFromTop (28);
-        titleLabel.setBounds (top.removeFromLeft (170));
+        auto nameInner = nameBlock.reduced (8, 2);
+        auto top = nameInner.removeFromTop (22);
+        titleLabel.setBounds (top.removeFromLeft (130));
 
-        randomPresetButton.setBounds (top.removeFromRight (70).reduced (2, 2));
-        initPresetButton.setBounds (top.removeFromRight (44).reduced (2, 2));
-        deletePresetButton.setBounds (top.removeFromRight (44).reduced (2, 2));
-        savePresetButton.setBounds (top.removeFromRight (48).reduced (2, 2));
-        presetBox.setBounds (top.removeFromRight (150).reduced (2, 2));
+        randomPresetButton.setBounds (top.removeFromRight (58).reduced (1, 1));
+        initPresetButton.setBounds (top.removeFromRight (38).reduced (1, 1));
+        deletePresetButton.setBounds (top.removeFromRight (36).reduced (1, 1));
+        savePresetButton.setBounds (top.removeFromRight (42).reduced (1, 1));
+        presetBox.setBounds (top.removeFromRight (120).reduced (1, 1));
         // Extra width so "MEMORY" is not ellipsised under Windows 125%/150% DPI scaling
-        presetLabel.setBounds (top.removeFromRight (88));
+        presetLabel.setBounds (top.removeFromRight (72));
 
-        modelLabel.setBounds (nameInner.withTrimmedLeft (4));
+        modelLabel.setBounds (nameInner.withTrimmedLeft (2));
     }
 
     area.removeFromTop (gap);
@@ -708,11 +711,11 @@ void APatheticSynthAudioProcessorEditor::resized()
     // ===== Band 1: three oscillators side by side =====
     {
         auto toneBand = area.removeFromTop (toneH);
-        tonePanelBounds = makePanelBounds (toneBand, 4, 3);
-        auto inner = toneBand.reduced (8, 4);
+        tonePanelBounds = makePanelBounds (toneBand, 3, 2);
+        auto inner = toneBand.reduced (6, 3);
 
         oscillatorsSectionLabel.setBounds (inner.removeFromTop (14));
-        inner.removeFromTop (2);
+        inner.removeFromTop (4); // clear space under section title for OSC titles
 
         const int colW = inner.getWidth() / 3;
         for (int i = 0; i < 3; ++i)
@@ -728,37 +731,37 @@ void APatheticSynthAudioProcessorEditor::resized()
         auto right = midBand.reduced (2, 0);
 
         {
-            ampPanelBounds = makePanelBounds (left, 4, 3);
-            auto inner = left.reduced (8, 4);
+            ampPanelBounds = makePanelBounds (left, 3, 2);
+            auto inner = left.reduced (6, 3);
             ampSectionLabel.setBounds (inner.removeFromTop (14));
-            inner.removeFromTop (2);
+            inner.removeFromTop (4); // clear space under section title for knob labels
 
-            auto knobs = inner.removeFromTop (inner.getHeight() - 44);
+            auto knobs = inner.removeFromTop (inner.getHeight() - 32);
             layoutKnobRow (knobs, {
                 &attackSlider, &decaySlider, &sustainSlider,
                 &releaseSlider, &gainSlider, &glideSlider
             });
 
-            auto toggles = inner.reduced (4, 2);
+            auto toggles = inner.reduced (2, 1);
             const int tw = toggles.getWidth() / 2;
-            fixedVelocityButton.setBounds (toggles.removeFromLeft (tw).reduced (4, 4));
-            glideLegatoButton.setBounds (toggles.reduced (4, 4));
+            fixedVelocityButton.setBounds (toggles.removeFromLeft (tw).reduced (2, 2));
+            glideLegatoButton.setBounds (toggles.reduced (2, 2));
         }
 
         {
             filterPanelBounds = makePanelBounds (right, 4, 3);
-            auto inner = right.reduced (8, 4);
+            auto inner = right.reduced (6, 3);
             filterSectionLabel.setBounds (inner.removeFromTop (14));
-            inner.removeFromTop (2);
+            inner.removeFromTop (4);
 
             auto topRow = inner.removeFromTop (inner.getHeight() / 2);
             const int topW = topRow.getWidth() / 4;
-            cutoffSlider.setBounds (topRow.removeFromLeft (topW).reduced (2, 2).withTrimmedTop (12));
-            resonanceSlider.setBounds (topRow.removeFromLeft (topW).reduced (2, 2).withTrimmedTop (12));
-            driveSlider.setBounds (topRow.removeFromLeft (topW).reduced (2, 2).withTrimmedTop (12));
-            auto typeCol = topRow.reduced (4, 2);
-            filterTypeLabel.setBounds (typeCol.removeFromTop (12));
-            filterTypeBox.setBounds (typeCol.removeFromTop (24));
+            cutoffSlider.setBounds (topRow.removeFromLeft (topW).reduced (1, 1).withTrimmedTop (16));
+            resonanceSlider.setBounds (topRow.removeFromLeft (topW).reduced (1, 1).withTrimmedTop (16));
+            driveSlider.setBounds (topRow.removeFromLeft (topW).reduced (1, 1).withTrimmedTop (16));
+            auto typeCol = topRow.reduced (2, 1);
+            filterTypeLabel.setBounds (typeCol.removeFromTop (10));
+            filterTypeBox.setBounds (typeCol.removeFromTop (20));
 
             layoutKnobRow (inner, {
                 &filtEnvAttackSlider, &filtEnvDecaySlider, &filtEnvSustainSlider,
@@ -781,64 +784,64 @@ void APatheticSynthAudioProcessorEditor::resized()
         auto c4 = fxBand;
 
         {
-            unisonPanelBounds = makePanelBounds (c0, 3, 3);
-            auto inner = c0.reduced (4, 4);
+            unisonPanelBounds = makePanelBounds (c0, 2, 2);
+            auto inner = c0.reduced (3, 3);
             unisonSectionLabel.setBounds (inner.removeFromTop (14));
-            inner.removeFromTop (2);
+            inner.removeFromTop (4);
             layoutKnobRow (inner, { &unisonVoicesSlider, &unisonDetuneSlider, &unisonSpreadSlider });
         }
 
         {
-            lfoPanelBounds = makePanelBounds (c1, 3, 3);
-            auto inner = c1.reduced (4, 4);
+            lfoPanelBounds = makePanelBounds (c1, 2, 2);
+            auto inner = c1.reduced (3, 3);
             lfoSectionLabel.setBounds (inner.removeFromTop (14));
-            inner.removeFromTop (2);
+            inner.removeFromTop (4);
 
-            auto knobArea = inner.removeFromTop (inner.getHeight() * 50 / 100);
+            auto knobArea = inner.removeFromTop (inner.getHeight() * 48 / 100);
             layoutKnobRow (knobArea, { &lfoRateSlider, &lfoDepthSlider });
 
-            auto comboRow = inner.removeFromTop (40).reduced (1, 2);
+            auto comboRow = inner.removeFromTop (34).reduced (1, 1);
             const int cw = comboRow.getWidth() / 2;
             auto shapeCol = comboRow.removeFromLeft (cw).reduced (1, 0);
-            lfoWaveformLabel.setBounds (shapeCol.removeFromTop (12));
-            lfoWaveformBox.setBounds (shapeCol.removeFromTop (22));
+            lfoWaveformLabel.setBounds (shapeCol.removeFromTop (10));
+            lfoWaveformBox.setBounds (shapeCol.removeFromTop (18));
             auto destCol = comboRow.reduced (1, 0);
-            lfoTargetLabel.setBounds (destCol.removeFromTop (12));
-            lfoTargetBox.setBounds (destCol.removeFromTop (22));
+            lfoTargetLabel.setBounds (destCol.removeFromTop (10));
+            lfoTargetBox.setBounds (destCol.removeFromTop (18));
 
-            lfoRetriggerButton.setBounds (inner.reduced (4, 2));
+            lfoRetriggerButton.setBounds (inner.reduced (2, 1));
         }
 
         {
-            chorusPanelBounds = makePanelBounds (c2, 3, 3);
-            auto inner = c2.reduced (4, 4);
+            chorusPanelBounds = makePanelBounds (c2, 2, 2);
+            auto inner = c2.reduced (3, 3);
             chorusSectionLabel.setBounds (inner.removeFromTop (14));
-            inner.removeFromTop (2);
+            inner.removeFromTop (4);
             layoutKnobRow (inner, { &chorusRateSlider, &chorusDepthSlider, &chorusMixSlider });
         }
 
         {
-            delayPanelBounds = makePanelBounds (c3, 3, 3);
-            auto inner = c3.reduced (4, 4);
+            delayPanelBounds = makePanelBounds (c3, 2, 2);
+            auto inner = c3.reduced (3, 3);
             delaySectionLabel.setBounds (inner.removeFromTop (14));
-            inner.removeFromTop (2);
+            inner.removeFromTop (4);
 
-            auto knobs = inner.removeFromTop (inner.getHeight() * 55 / 100);
+            auto knobs = inner.removeFromTop (inner.getHeight() * 52 / 100);
             layoutKnobRow (knobs, { &delayTimeSlider, &delayFeedbackSlider, &delayMixSlider });
 
-            auto syncRow = inner.removeFromTop (24).reduced (2, 2);
+            auto syncRow = inner.removeFromTop (20).reduced (1, 1);
             delaySyncButton.setBounds (syncRow);
 
-            auto divCol = inner.reduced (2, 2);
-            delayDivisionLabel.setBounds (divCol.removeFromTop (12));
-            delayDivisionBox.setBounds (divCol.removeFromTop (22));
+            auto divCol = inner.reduced (1, 1);
+            delayDivisionLabel.setBounds (divCol.removeFromTop (10));
+            delayDivisionBox.setBounds (divCol.removeFromTop (18));
         }
 
         {
-            reverbPanelBounds = makePanelBounds (c4, 3, 3);
-            auto inner = c4.reduced (4, 4);
+            reverbPanelBounds = makePanelBounds (c4, 2, 2);
+            auto inner = c4.reduced (3, 3);
             reverbSectionLabel.setBounds (inner.removeFromTop (14));
-            inner.removeFromTop (2);
+            inner.removeFromTop (4);
             layoutKnobRow (inner, {
                 &reverbSizeSlider, &reverbDampingSlider, &reverbWidthSlider, &reverbMixSlider
             });
